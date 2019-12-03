@@ -90,7 +90,7 @@
         -log_id
 	-belongs_to :user
         -user_id
-	-Species
+    -Species
 	-Weight
 	-Length
 	-Bait
