@@ -1,0 +1,93 @@
+## Rails
+	-Postgres
+	-ActiveRecord
+	-Devise
+	-Bootstrap
+	
+## User
+	-Email
+	-FIrst Name
+	-Last Name
+	-Password(crypt)
+	-has_many :logs
+	-has_many :catches, through :logs
+
+## Logs
+	-belongs_to :user
+	-has_many :catches
+	-Date
+		-Start
+		-End
+	-Location(encrypted?)
+	-Wind Direction
+		-N
+		-NNE
+		-NE
+		-ENE
+		-E
+		-ESE
+		-SE
+		-SSE
+		-S
+		-SSW
+		-SW
+		-WSW
+		-W
+		-WNW
+		-NW
+		-NNW
+	-Wind Speed
+		-0-10mph
+		-10-20mph
+		-20-30mph
+		-30-40mph
+	-Conditions
+		-Sunny
+		-Cloudy
+		-Foggy
+		-Bright Moon
+		-Dark
+	-Precipitation
+		-Dry
+		-Drizzle
+		-Rain
+	-Water Clarity
+		-Clear
+		-Stained
+		-Chocolatte
+	-Moon Phase
+		-First Quarter
+		-Waxing Crescent
+		-New
+		-Waning Crescent
+		-Third Quarter
+		-Waning Gibbous
+		-Full
+		-Waxing Gibbous
+	-Air Temperature
+		-Custom
+	-Water Temperature
+		-Custom
+	-Barometer
+		-Steady
+		-Rising
+		-Falling
+	-Swell
+		-Feet
+	-Tide
+		-Incoming
+		-Outgoing
+		-Low Slack
+		-High Slack
+	-Trip Rating
+		-1-5
+	-Comments
+		-Text(encrypted?)
+
+## Catches
+	-belongs_to :log
+	-has_many :users, through :logs
+	-Species
+	-Weight
+	-Length
+	-Tricked With(lure selection)
