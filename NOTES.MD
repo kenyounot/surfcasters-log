@@ -6,7 +6,7 @@
 	
 ## User
 	-Email
-	-FIrst Name
+	-First Name
 	-Last Name
 	-Password(crypt)
 	-has_many :logs
@@ -14,6 +14,7 @@
 
 ## Logs
 	-belongs_to :user
+        -user_id
 	-has_many :catches
 	-Date
 		-Start
@@ -86,8 +87,10 @@
 
 ## Catches
 	-belongs_to :log
-	-has_many :users, through :logs
+        -log_id
+	-belongs_to :user
+        -user_id
 	-Species
 	-Weight
 	-Length
-	-Tricked With(lure selection)
+	-Bait

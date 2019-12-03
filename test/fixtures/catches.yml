@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  species: MyString
+  weight: 1
+  length: 1
+  bait: MyString
+  log: one
+  user: one
+
+two:
+  species: MyString
+  weight: 1
+  length: 1
+  bait: MyString
+  log: two
+  user: two
