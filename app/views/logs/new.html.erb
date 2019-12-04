@@ -1,0 +1,64 @@
+<h1>Create a new log!</h1>
+
+<%= form_for(@log) do |f| %>
+    <div>
+        <%= f.label :start_date %>
+        <%= f.datetime_select :start_date %>
+    </div>
+
+    <div>
+        <%= f.label :end_date%>
+        <%= f.datetime_select :end_date %>
+    </div>
+
+    <div>
+        <%= f.label :location%>
+        <%= f.text_field :location %>
+    </div>
+
+    <div>
+        <%= f.label :wind_direction %>
+        <%= f.select :wind_direction, ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'] %>
+    </div>
+
+    <div>
+        <%= f.label :wind_speed %>
+        <%= f.select :wind_speed, ['0-10mph', '10-20mph', '20-30mph', '30-40mph'] %>
+    </div>
+
+    <div>
+        <%= f.label :conditions%>
+        <%= f.select :conditions, ['Sunny', 'Cloudy', 'Foggy', 'Bright Moon', 'Dark'] %>
+    </div>
+
+    <div>
+        <%= f.label :precipitation %>
+        <%= f.select :precipitation, ['Dry', 'Drizzle', 'Rain'] %>
+    </div>
+
+    <div>
+        <%= f.label :water_clarity %>
+        <%= f.select :water_clarity, ['Clear', 'Stained', 'Chocolatte'] %>
+    </div>
+<% end %>
+
+
+
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string "location"
+    t.string "wind_direcion"
+    t.integer "wind_speed"
+    t.string "conditions"
+    t.string "precipitation"
+    t.string "water_clarity"
+    t.string "moon_phase"
+    t.integer "air_temperature"
+    t.integer "water_temperature"
+    t.string "barometer"
+    t.integer "swell"
+    t.string "tide"
+    t.integer "trip_rating"
+    t.text "comments"
+    t.integer "user_id", null: false
+    t.integer "catch_id", null: false

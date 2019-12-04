@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_194656) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.string "location"
-    t.string "wind_direcion"
+    t.string "wind_direction"
     t.integer "wind_speed"
     t.string "conditions"
     t.string "precipitation"
