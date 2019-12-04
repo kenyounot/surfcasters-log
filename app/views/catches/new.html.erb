@@ -1,118 +1,122 @@
-<h1>Create a new log!</h1>
+<h1>Create a Catch!</h1>
 
-<% if @log.errors.any? %>
+<% if @catch.errors.any? %>
 <ul>
-  <% @log.errors.full_messages.each do |msg| %>
+  <% @catch.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>
   <% end %>
 </ul>
 <% end %>
 
 
-<%= form_for(@log) do |f| %>
+<%= form_for(@catch) do |f| %>
+   <div>
+    <%= f.label :species %>
+    <%= f.text_field :species %>
+   </div>
+
+   <div>
+    <%= f.label :quantity %>
+    <%= f.select :quantity, (1..30) %>
+   </div>
+
+   <div>
+    <%= f.label :weight %>
+    <%= f.text_field :weight %>
+   </div>
+
+   <div>
+    <%= f.label :length %>
+    <%= f.text_field :length %>
+   </div>
+
+   <div>
+    <%= f.label :bait %>
+    <%= f.text_field :bait %>
+   </div>
+
+    <h2>Log Information:</h2>
     <div>
-        <%= f.label :start_date %>
-        <%= f.datetime_select :start_date %>
+        <%= f.fields_for :log do |log_attr| %>
+           <div>
+        <%= log_attr.label :start_date %>
+        <%= log_attr.datetime_select :start_date %>
+    </div>
+    <div>
+        <%= log_attr.label :end_date%>
+        <%= log_attr.datetime_select :end_date %>
     </div>
 
     <div>
-        <%= f.label :end_date%>
-        <%= f.datetime_select :end_date %>
+        <%= log_attr.label :location%>
+        <%= log_attr.text_field :location %>
     </div>
 
     <div>
-        <%= f.label :location%>
-        <%= f.text_field :location %>
+        <%= log_attr.label :wind_direction %>
+        <%= log_attr.select :wind_direction, ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'] %>
     </div>
 
     <div>
-        <%= f.label :wind_direction %>
-        <%= f.select :wind_direction, ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'] %>
+        <%= log_attr.label :wind_speed %>
+        <%= log_attr.select :wind_speed, ['0-10mph', '10-20mph', '20-30mph', '30-40mph'] %>
     </div>
 
     <div>
-        <%= f.label :wind_speed %>
-        <%= f.select :wind_speed, ['0-10mph', '10-20mph', '20-30mph', '30-40mph'] %>
+        <%= log_attr.label :conditions%>
+        <%= log_attr.select :conditions, ['Sunny', 'Cloudy', 'Foggy', 'Bright Moon', 'Dark'] %>
     </div>
 
     <div>
-        <%= f.label :conditions%>
-        <%= f.select :conditions, ['Sunny', 'Cloudy', 'Foggy', 'Bright Moon', 'Dark'] %>
+        <%= log_attr.label :precipitation %>
+        <%= log_attr.select :precipitation, ['Dry', 'Drizzle', 'Rain'] %>
     </div>
 
     <div>
-        <%= f.label :precipitation %>
-        <%= f.select :precipitation, ['Dry', 'Drizzle', 'Rain'] %>
+        <%= log_attr.label :water_clarity %>
+        <%= log_attr.select :water_clarity, ['Clear', 'Stained', 'Chocolatte'] %>
     </div>
 
     <div>
-        <%= f.label :water_clarity %>
-        <%= f.select :water_clarity, ['Clear', 'Stained', 'Chocolatte'] %>
+        <%= log_attr.label :moon_phase%>
+        <%= log_attr.select :moon_phase, ['First Quarter', 'Waxing Crescent', 'New', 'Waning Crescent', 'Third Quarter', 'Waning Gibbous', 'Full', 'Waxing Gibbous'] %>
     </div>
 
     <div>
-        <%= f.label :moon_phase%>
-        <%= f.select :moon_phase, ['First Quarter', 'Waxing Crescent', 'New', 'Waning Crescent', 'Third Quarter', 'Waning Gibbous', 'Full', 'Waxing Gibbous'] %>
+        <%= log_attr.label :air_temperature %>
+        <%= log_attr.select :air_temperature, (-10..100) %>
     </div>
 
     <div>
-        <%= f.label :air_temperature %>
-        <%= f.select :air_temperature, (-10..100) %>
+        <%= log_attr.label :water_temperature %>
+        <%= log_attr.select :water_temperature, (20..80) %>
     </div>
 
     <div>
-        <%= f.label :water_temperature %>
-        <%= f.select :water_temperature, (20..80) %>
+        <%= log_attr.label :barometer %>
+        <%= log_attr.select :barometer, ['Steady', 'Rising', 'Falling'] %>
     </div>
 
     <div>
-        <%= f.label :barometer %>
-        <%= f.select :barometer, ['Steady', 'Rising', 'Falling'] %>
+        <%= log_attr.label :swell %>
+        <%= log_attr.select :swell, (0..12) %> ft
     </div>
 
     <div>
-        <%= f.label :swell %>
-        <%= f.select :swell, (0..12) %> ft
-    </div>
-
-    <div>
-        <%= f.label :tide %>
-        <%= f.select :tide, ['Incoming', 'Outgoing', 'Low Slack', 'High Slack'] %>
+        <%= log_attr.label :tide %>
+        <%= log_attr.select :tide, ['Incoming', 'Outgoing', 'Low Slack', 'High Slack'] %>
     </div>
    
 
     <div>
-        <%= f.label :trip_rating %>
-        <%= f.select :trip_rating, (1..5) %>
+        <%= log_attr.label :trip_rating %>
+        <%= log_attr.select :trip_rating, (1..5) %>
     </div>
 
     <div>
-        <%= f.label :comments, "Comments: " %><br>
-        <%= f.text_area :comments%>
+        <%= log_attr.label :comments, "Comments: " %><br>
+        <%= log_attr.text_area :comments%>
     </div>
-
-    <h2>Catch Information:</h2>
-    <div>
-        <%= f.fields_for :catch do |catch_attr| %>
-            <div>
-                <%= catch_attr.label :species %>
-                <%= catch_attr.text_field :species %>
-            </div>
-
-             <div>
-                <%= catch_attr.label :weight %>
-                <%= catch_attr.text_field :weight %>
-            </div>
-
-            <div>
-                <%= catch_attr.label :length %>
-                <%= catch_attr.text_field :length %>
-            </div>
-
-            <div>
-                <%= catch_attr.label :bait%>
-                <%= catch_attr.text_field :bait %>
-            </div>
         <% end %>
 
         <div>

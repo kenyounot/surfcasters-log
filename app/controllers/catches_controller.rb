@@ -6,11 +6,11 @@ class CatchesController < ApplicationController
 
     def create
         
-        @log = Log.new(log_params)
-        @log.user_id = current_user.id
+        @catch = Catch.new(catch_params)
+        @catch.user_id = current_user.id
         
-        if @log.save!
-            redirect_to log_path(@log)
+        if @catch.save
+            redirect_to catch_path(@catch)
         else
             render :new
         end
@@ -21,8 +21,8 @@ class CatchesController < ApplicationController
 
     private
 
-    def log_params
-        params.require(:log).permit(:start_date, :end_date, :location, :wind_direction, :wind_speed, :conditions, :precipitation, :water_clarity, :moon_phase, :air_temperature, :water_temperature, :barometer, :swell, :tide, :trip_rating, :comments, catch_attributes: [:species, :weight, :length, :bait])
+    def catch_params
+        params.require(:catch).permit(:species, :quantity, :weight, :length, :bait, log_attributes: [:start_date, :end_date, :location, :wind_direction, :wind_speed, :conditions, :precipitation, :water_clarity, :moon_phase, :air_temperature, :water_temperature, :barometer, :swell, :tide, :trip_rating, :comments])
     end
 
 end

@@ -14,11 +14,16 @@ ActiveRecord::Schema.define(version: 2019_12_03_194656) do
 
   create_table "catches", force: :cascade do |t|
     t.string "species"
+    t.integer "quantity"
     t.integer "weight"
     t.integer "length"
     t.string "bait"
+    t.integer "user_id", null: false
+    t.integer "log_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["log_id"], name: "index_catches_on_log_id"
+    t.index ["user_id"], name: "index_catches_on_user_id"
   end
 
   create_table "logs", force: :cascade do |t|
@@ -38,12 +43,8 @@ ActiveRecord::Schema.define(version: 2019_12_03_194656) do
     t.string "tide"
     t.integer "trip_rating"
     t.text "comments"
-    t.integer "user_id", null: false
-    t.integer "catch_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["catch_id"], name: "index_logs_on_catch_id"
-    t.index ["user_id"], name: "index_logs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,6 +61,6 @@ ActiveRecord::Schema.define(version: 2019_12_03_194656) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "logs", "catches"
-  add_foreign_key "logs", "users"
+  add_foreign_key "catches", "logs"
+  add_foreign_key "catches", "users"
 end
