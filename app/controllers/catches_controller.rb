@@ -10,7 +10,7 @@ class CatchesController < ApplicationController
         @catch.user_id = current_user.id
         
         if @catch.save
-            redirect_to catch_path(@catch)
+            redirect_to logs_path
         else
             render :new
         end

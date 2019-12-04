@@ -1,0 +1,5 @@
+<h1>Here are your logs!</h1>
+
+<% @logs.each do |log| %>
+    <%= link_to log.location, log_path(log) %>
+<% end %>
