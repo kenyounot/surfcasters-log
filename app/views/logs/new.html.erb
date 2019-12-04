@@ -1,5 +1,14 @@
 <h1>Create a new log!</h1>
 
+<% if @log.errors.any? %>
+<ul>
+  <% @log.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+
 <%= form_for(@log) do |f| %>
     <div>
         <%= f.label :start_date %>
@@ -40,25 +49,75 @@
         <%= f.label :water_clarity %>
         <%= f.select :water_clarity, ['Clear', 'Stained', 'Chocolatte'] %>
     </div>
+
+    <div>
+        <%= f.label :moon_phase%>
+        <%= f.select :moon_phase, ['First Quarter', 'Waxing Crescent', 'New', 'Waning Crescent', 'Third Quarter', 'Waning Gibbous', 'Full', 'Waxing Gibbous'] %>
+    </div>
+
+    <div>
+        <%= f.label :air_temperature %>
+        <%= f.select :air_temperature, (-10..100) %>
+    </div>
+
+    <div>
+        <%= f.label :water_temperature %>
+        <%= f.select :water_temperature, (20..80) %>
+    </div>
+
+    <div>
+        <%= f.label :barometer %>
+        <%= f.select :barometer, ['Steady', 'Rising', 'Falling'] %>
+    </div>
+
+    <div>
+        <%= f.label :swell %>
+        <%= f.select :swell, (0..12) %> ft
+    </div>
+
+    <div>
+        <%= f.label :tide %>
+        <%= f.select :tide, ['Incoming', 'Outgoing', 'Low Slack', 'High Slack'] %>
+    </div>
+   
+
+    <div>
+        <%= f.label :trip_rating %>
+        <%= f.select :trip_rating, (1..5) %>
+    </div>
+
+    <div>
+        <%= f.label :comments, "Comments: " %><br>
+        <%= f.text_area :comments%>
+    </div>
+
+    <h2>Catch Information:</h2>
+    <div>
+        <%= f.fields_for :catch do |catch_attr| %>
+            <div>
+                <%= catch_attr.label :species %>
+                <%= catch_attr.text_field :species %>
+            </div>
+
+             <div>
+                <%= catch_attr.label :weight %>
+                <%= catch_attr.text_field :weight %>
+            </div>
+
+            <div>
+                <%= catch_attr.label :length %>
+                <%= catch_attr.text_field :length %>
+            </div>
+
+            <div>
+                <%= catch_attr.label :bait%>
+                <%= catch_attr.text_field :bait %>
+            </div>
+        <% end %>
+
+        <div>
+            <%= f.submit %>
+        </div>
+    </div>
+
 <% end %>
-
-
-
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.string "location"
-    t.string "wind_direcion"
-    t.integer "wind_speed"
-    t.string "conditions"
-    t.string "precipitation"
-    t.string "water_clarity"
-    t.string "moon_phase"
-    t.integer "air_temperature"
-    t.integer "water_temperature"
-    t.string "barometer"
-    t.integer "swell"
-    t.string "tide"
-    t.integer "trip_rating"
-    t.text "comments"
-    t.integer "user_id", null: false
-    t.integer "catch_id", null: false
