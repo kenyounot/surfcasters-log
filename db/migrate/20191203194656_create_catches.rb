@@ -5,7 +5,6 @@ class CreateCatches < ActiveRecord::Migration[6.0]
       t.integer :weight
       t.integer :length
       t.string :bait
-      t.belongs_to :log, null: false, foreign_key: true
 
       t.timestamps
     end

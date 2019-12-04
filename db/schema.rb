@@ -17,10 +17,8 @@ ActiveRecord::Schema.define(version: 2019_12_03_194656) do
     t.integer "weight"
     t.integer "length"
     t.string "bait"
-    t.integer "log_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["log_id"], name: "index_catches_on_log_id"
   end
 
   create_table "logs", force: :cascade do |t|
@@ -62,7 +60,6 @@ ActiveRecord::Schema.define(version: 2019_12_03_194656) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "catches", "logs"
   add_foreign_key "logs", "catches"
   add_foreign_key "logs", "users"
 end

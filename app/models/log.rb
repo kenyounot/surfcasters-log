@@ -1,6 +1,6 @@
 class Log < ApplicationRecord
-  belongs_to :user
-  belongs_to :catch
+  has_many :catches
+  has_many :users, through: :catches
 
   accepts_nested_attributes_for :catch
 end

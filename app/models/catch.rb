@@ -1,4 +1,4 @@
 class Catch < ApplicationRecord
   belongs_to :log
-  has_many :users, through: :logs
+  belongs_to :user
 end

@@ -9,13 +9,12 @@
 	-First Name
 	-Last Name
 	-Password(crypt)
-	-has_many :logs
-	-has_many :catches, through :logs
+	-has_many :catches
+	-has_many :logs, through :catches
 
 ## Logs
-	-belongs_to :user
-        -user_id
 	-has_many :catches
+	-has_many :users, through: :catches
 	-Date
 		-Start
 		-End
