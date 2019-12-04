@@ -1,4 +1,4 @@
 class Log < ApplicationRecord
   belongs_to :user
-  has_many :catches
+  belongs_to :catch
 end
