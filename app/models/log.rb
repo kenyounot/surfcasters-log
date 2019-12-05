@@ -1,4 +1,4 @@
 class Log < ApplicationRecord
   has_many :catches
-  has_one :user
+  has_many :users, through: :catches
 end
