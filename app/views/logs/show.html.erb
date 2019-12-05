@@ -1,0 +1,20 @@
+<h1>Here is your log for that catch.</h1>
+
+<div>
+    <p>Log Start Date: <%= @log.start_date.strftime("%b %e, %l:%M %p") %></p>
+    <p>Log End Date: <%= @log.end_date.strftime("%b %e, %l:%M %p") %></p>
+    <p>Location: <%= @log.location %></p>
+    <p>Wind Direction: <%= @log.wind_direction %></p>
+    <p>Wind Speed: <%= @log.wind_speed %></p>
+    <p>Conditions: <%= @log.conditions%></p>
+    <p>Precipitation: <%= @log.precipitation %></p>
+    <p>Water Clarity: <%= @log.water_clarity %></p>
+    <p>Moon Phase: <%= @log.moon_phase %></p>
+    <p>Air Temperature: <%= @log.air_temperature %></p>
+    <p>Water Temperature: <%= @log.water_temperature %></p>
+    <p>Barometer: <%= @log.barometer %></p>
+    <p>Swell: <%= @log.swell %></p>
+    <p>Tide: <%= @log.tide %></p>
+    <p>Trip Rating: <%= @log.trip_rating %></p>
+    <p>Comments: <%= @log.comments %></p>
+</div>

@@ -1,0 +1,10 @@
+<h1>Here are all your catches!</h1>
+
+<% @catches.each do |catch| %>
+    <p>Species     Location</p>
+    <p><%= catch.species + " " + catch.log.location %></p>
+    <p><%= catch.log.location %></p>
+    <p><%= link_to 'View Log', log_path(catch.log)%></p>
+<% end %>
+
+

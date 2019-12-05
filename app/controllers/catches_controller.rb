@@ -5,7 +5,6 @@ class CatchesController < ApplicationController
     end
 
     def create
-        
         @catch = Catch.new(catch_params)
         @catch.user_id = current_user.id
         
@@ -14,6 +13,10 @@ class CatchesController < ApplicationController
         else
             render :new
         end
+    end
+
+    def index
+        @catches = Catch.all
     end
 
 

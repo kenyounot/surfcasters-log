@@ -1,5 +1,5 @@
 class LogsController < ApplicationController
-    def index
-        @logs = Log.all
+    def show
+        @log = Log.find_by_id(params[:id])
     end
 end
