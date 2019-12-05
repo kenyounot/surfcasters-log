@@ -1,4 +1,4 @@
-<h1>Here is your log for that catch.</h1>
+<h1>Here is your log for the <%= @log.catches[0].species %> you caught.</h1>
 
 <div>
     <p>Log Start Date: <%= @log.start_date.strftime("%b %e, %l:%M %p") %></p>
@@ -17,4 +17,9 @@
     <p>Tide: <%= @log.tide %></p>
     <p>Trip Rating: <%= @log.trip_rating %></p>
     <p>Comments: <%= @log.comments %></p>
+
+    <h4>Here is what you caught on this trip: </h4>
+    <% @log.catches.each do |catch| %>
+        <p><%= catch.species %></p>
+    <% end %>
 </div>
