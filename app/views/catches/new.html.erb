@@ -12,7 +12,7 @@
 <%= form_for(@catch) do |f| %>
    <div>
     <%= f.label :species %>
-    <%= f.text_field :species %>
+    <%= f.select :species, ['Striped Bass', 'Fluke', 'Blue Fish', 'Black Fish', 'Weak Fish', 'False Albacore', 'Bonito'] %>
    </div>
 
    <div>
